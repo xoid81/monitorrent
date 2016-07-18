@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from sqlalchemy import Column, Integer, Boolean, String, MetaData, Table
 from sqlalchemy_enum34 import EnumType
 

@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import unicode_literals
 import requests_mock
 from ddt import ddt, data, unpack
 from future.utils import PY3

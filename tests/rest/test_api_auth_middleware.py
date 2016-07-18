@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import falcon
 from falcon.testing import TestResource as ResourceMock
 from tests import RestTestBase

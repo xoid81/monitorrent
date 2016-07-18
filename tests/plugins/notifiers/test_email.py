@@ -1,3 +1,6 @@
+from __future__ import unicode_literals
+from builtins import str
+from builtins import object
 import smtplib
 
 from mock import Mock, ANY
@@ -7,7 +10,7 @@ from monitorrent.plugins.notifiers.email_sender import EmailNotifierPlugin, Emai
 from tests import DbTestCase
 
 
-class EmailHelper:
+class EmailHelper(object):
     fake_host = u'this_is_fake'
     fake_port = 443
     fake_login = None

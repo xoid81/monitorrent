@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import unicode_literals
 from monitorrent.plugins.notifiers import NotifierType
 from monitorrent.plugins.notifiers.pushover import PushoverException, PushoverNotifierPlugin, PushoverSettings
 from tests import use_vcr, DbTestCase

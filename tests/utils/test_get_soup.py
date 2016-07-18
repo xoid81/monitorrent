@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import sys
 from tests import TestCase
 from monitorrent.utils.soup import get_soup

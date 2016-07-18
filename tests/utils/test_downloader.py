@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import requests
 from ddt import ddt, data
 from tests import TestCase, use_vcr

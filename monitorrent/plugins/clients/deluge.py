@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import six
 import base64
 from deluge_client import DelugeRPCClient

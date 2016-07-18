@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import sys
 from threading import Event
 from ddt import ddt, data

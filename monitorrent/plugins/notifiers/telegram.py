@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import unicode_literals
 import re
 import requests
 from sqlalchemy import Column, Integer, String, MetaData, Table, ForeignKey

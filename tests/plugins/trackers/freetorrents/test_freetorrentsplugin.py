@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import unicode_literals
 from mock import patch
 from builtins import zip
 from functools import reduce

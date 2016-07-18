@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import pytz
 from monitorrent.db import UTCDateTime
 from monitorrent.plugins import upgrade, get_current_version

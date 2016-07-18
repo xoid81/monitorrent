@@ -1,6 +1,7 @@
 """
 init code for run falcon API
 """
+from __future__ import unicode_literals
 import json
 import datetime
 import falcon

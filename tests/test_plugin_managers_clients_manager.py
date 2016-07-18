@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from ddt import ddt, data
 from mock import Mock, MagicMock, patch
 from tests import TestCase, DbTestCase

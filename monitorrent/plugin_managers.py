@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import os
 from monitorrent.db import DBSession, row2dict
 from monitorrent.plugins import Topic

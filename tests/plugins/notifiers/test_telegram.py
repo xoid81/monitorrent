@@ -1,9 +1,11 @@
+from __future__ import unicode_literals
 from monitorrent.plugins.notifiers import NotifierType
+from builtins import object
 from monitorrent.plugins.notifiers.telegram import TelegramNotifierPlugin, TelegramSettings, TelegramException
 from tests import use_vcr, DbTestCase
 
 
-class TelegramHelper:
+class TelegramHelper(object):
     fake_token = 'this_is_fake'
     fake_chat_id = '12343'
 
