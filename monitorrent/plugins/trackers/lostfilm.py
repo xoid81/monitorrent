@@ -547,7 +547,7 @@ class LostFilmPlugin(WithCredentialsMixin, TrackerPluginBase):
                             download_info = episode['download_info']
 
                             if download_info is None:
-                                engine_downloads.failed(u'Failed get quality "{0}" for series: {1}'
+                                engine_downloads.failed('Failed get quality "{0}" for series: {1}'
                                                         .format(topic.quality, html.escape(display_name)))
                                 # Should fail to get quality be treated as NotFound?
                                 self.save_topic(topic, None, Status.Error)
@@ -559,7 +559,7 @@ class LostFilmPlugin(WithCredentialsMixin, TrackerPluginBase):
                                 if response.status_code != 200:
                                     raise Exception(u"Can't download url. Status: {}".format(response.status_code))
                             except Exception as e:
-                                engine_downloads.failed(u"Failed to download from <b>{0}</b>.\nReason: {1}"
+                                engine_downloads.failed("Failed to download from <b>{0}</b>.\nReason: {1}"
                                                         .format(download_info['download_url'], html.escape(str(e))))
                                 self.save_topic(topic, None, Status.Error)
                                 continue
