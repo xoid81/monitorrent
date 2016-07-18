@@ -242,7 +242,7 @@ class ExecuteWithHashChangeMixin(TrackerPluginMixinBase):
                             topic.last_update = last_update
                             self.save_topic(topic, last_update, Status.Ok)
                     elif changed:
-                        engine.info(u"Torrent <b>{0}</b> was determined as changed, but torrent hash wasn't"
+                        engine.info("Torrent <b>{0}</b> was determined as changed, but torrent hash wasn't"
                                     .format(topic_name))
                         self.save_topic(topic, None, Status.Ok)
 
@@ -257,16 +257,16 @@ class LoginResult(Enum):
 
     def __str__(self):
         if self == LoginResult.Ok:
-            return u"Ok"
+            return "Ok"
         if self == LoginResult.CredentialsNotSpecified:
-            return u"Credentials not specified"
+            return "Credentials not specified"
         if self == LoginResult.IncorrentLoginPassword:
-            return u"Incorrent login/password"
+            return "Incorrent login/password"
         if self == LoginResult.InternalServerError:
-            return u"Internal server error"
+            return "Internal server error"
         if self == LoginResult.ServiceUnavailable:
-            return u"Service unavailable"
-        return u"Unknown"
+            return "Service unavailable"
+        return "Unknown"
 
 
 # noinspection PyUnresolvedReferences

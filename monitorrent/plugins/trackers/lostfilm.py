@@ -135,8 +135,8 @@ class LostFilmTVTracker(object):
                             six.text_type(r'(\s+\[(?P<quality>[^\]]+)\])?\.\s+') +
                             six.text_type(r'\((?P<episode_info>[^)]+)\)'))
     _season_info = re.compile(six.text_type(r'S(?P<season>\d{2})(E(?P<episode>\d{2}))+'))
-    _season_title_info = re.compile(u'^(?P<season>\d+)(\.(?P<season_fraction>\d+))?\s+сезон' +
-                                    u'(\s+((\d+)-)?(?P<episode>\d+)\s+серия)?$')
+    _season_title_info = re.compile('^(?P<season>\d+)(\.(?P<season_fraction>\d+))?\s+сезон' +
+                                    '(\s+((\d+)-)?(?P<episode>\d+)\s+серия)?$')
     _headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) " + '
                       '"Chrome/48.0.2564.109 Safari/537.36',
@@ -626,7 +626,7 @@ class LostFilmPlugin(WithCredentialsMixin, TrackerPluginBase):
 
     def _get_display_name(self, parsed_url):
         if 'name' in parsed_url:
-            return u"{0} / {1}".format(parsed_url['name'], parsed_url['original_name'])
+            return "{0} / {1}".format(parsed_url['name'], parsed_url['original_name'])
         return parsed_url['original_name']
 
     def _set_topic_params(self, url, parsed_url, topic, params):

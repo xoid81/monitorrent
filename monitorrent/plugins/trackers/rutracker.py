@@ -78,7 +78,7 @@ class RutrackerTracker(object):
 
     def login(self, username, password):
         s = Session()
-        data = {"login_username": username, "login_password": password, 'login': u'%E2%F5%EE%E4'}
+        data = {"login_username": username, "login_password": password, 'login': '%E2%F5%EE%E4'}
         login_result = s.post(self.login_url, data, **self.tracker_settings.get_requests_kwargs())
         if login_result.url.startswith(self.login_url):
             # TODO get error info (although it shouldn't contain anything useful

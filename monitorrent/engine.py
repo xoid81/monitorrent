@@ -83,19 +83,19 @@ class Engine(object):
         """
         existing_torrent = self.clients_manager.find_torrent(torrent.info_hash)
         if existing_torrent:
-            self.info(u"Torrent <b>{0}</b> already added".format(filename))
+            self.info("Torrent <b>{0}</b> already added".format(filename))
         elif self.clients_manager.add_torrent(torrent.raw_content, topic_settings):
             old_existing_torrent = self.clients_manager.find_torrent(old_hash) if old_hash else None
             if old_existing_torrent:
-                self.info(u"Updated <b>{0}</b>".format(filename))
+                self.info("Updated <b>{0}</b>".format(filename))
             else:
-                self.info(u"Add new <b>{0}</b>".format(filename))
+                self.info("Add new <b>{0}</b>".format(filename))
             if old_existing_torrent:
                 if self.clients_manager.remove_torrent(old_hash):
-                    self.info(u"Remove old torrent <b>{0}</b>"
+                    self.info("Remove old torrent <b>{0}</b>"
                               .format(html.escape(old_existing_torrent['name'])))
                 else:
-                    self.failed(u"Can't remove old torrent <b>{0}</b>"
+                    self.failed("Can't remove old torrent <b>{0}</b>"
                                 .format(html.escape(old_existing_torrent['name'])))
             existing_torrent = self.clients_manager.find_torrent(torrent.info_hash)
         if not existing_torrent:
