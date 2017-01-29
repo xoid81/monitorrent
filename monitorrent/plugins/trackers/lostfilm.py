@@ -128,13 +128,13 @@ class LostFilmTVLoginFailedException(Exception):
 
 class LostFilmTVTracker(object):
     tracker_settings = None
-    _regex = re.compile(six.text_type(r'https?://www\.lostfilm\.tv/browse\.php\?cat=_?(?P<cat>\d+)'))
-    search_usess_re = re.compile(six.text_type(r'\(usess=([a-f0-9]{32})\)'), re.IGNORECASE)
-    _rss_title = re.compile(six.text_type(r'(?P<name>[^(]+)\s+\((?P<original_name>[^(]+)\)\.\s+') +
-                            six.text_type(r'(?P<title>[^([]+)(\s+\((?P<original_title>[^(]+)\))?') +
-                            six.text_type(r'(\s+\[(?P<quality>[^\]]+)\])?\.\s+') +
-                            six.text_type(r'\((?P<episode_info>[^)]+)\)'))
-    _season_info = re.compile(six.text_type(r'S(?P<season>\d{2})(E(?P<episode>\d{2}))+'))
+    _regex = re.compile(r'https?://www\.lostfilm\.tv/browse\.php\?cat=_?(?P<cat>\d+)')
+    search_usess_re = re.compile(r'\(usess=([a-f0-9]{32})\)', re.IGNORECASE)
+    _rss_title = re.compile(r'(?P<name>[^(]+)\s+\((?P<original_name>[^(]+)\)\.\s+' +
+                            r'(?P<title>[^([]+)(\s+\((?P<original_title>[^(]+)\))?' +
+                            r'(\s+\[(?P<quality>[^\]]+)\])?\.\s+' +
+                            r'\((?P<episode_info>[^)]+)\)')
+    _season_info = re.compile(r'S(?P<season>\d{2})(E(?P<episode>\d{2}))+')
     _season_title_info = re.compile('^(?P<season>\d+)(\.(?P<season_fraction>\d+))?\s+сезон' +
                                     '(\s+((\d+)-)?(?P<episode>\d+)\s+серия)?$')
     _headers = {

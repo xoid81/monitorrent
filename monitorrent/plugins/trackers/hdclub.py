@@ -32,7 +32,7 @@ class HdclubTopic(Topic):
 
 class HdclubTracker(object):
     tracker_settings = None
-    url_regex = re.compile(six.text_type(r'^https?://hdclub\.org/details\.php\?id=(\d+)$'))
+    url_regex = re.compile(r'^https?://hdclub\.org/details\.php\?id=(\d+)$')
 
     def __init__(self, passkey=None):
         self.passkey = passkey
