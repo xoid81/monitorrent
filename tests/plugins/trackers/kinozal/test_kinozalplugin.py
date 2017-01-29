@@ -46,7 +46,7 @@ class KinozalPluginTest(DbTestCase):
     @use_vcr
     def test_parse_url_success(self):
         parsed_url = self.plugin.parse_url("http://kinozal.tv/details.php?id=1506818")
-        assert parsed_url['original_name'] == u'Война против всех / War on Everyone / 2016 / ДБ / WEB-DLRip'
+        assert parsed_url['original_name'] == 'Война против всех / War on Everyone / 2016 / ДБ / WEB-DLRip'
 
     @use_vcr
     def test_login_verify_fail(self):

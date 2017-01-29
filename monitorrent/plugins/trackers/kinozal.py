@@ -67,31 +67,31 @@ def get_current_version(engine):
 
 class KinozalDateParser(object):
     months = {
-        u'января': 1,
-        u'февраля': 2,
-        u'марта': 3,
-        u'апреля': 4,
-        u'мая': 5,
-        u'июня': 6,
-        u'июля': 7,
-        u'августа': 8,
-        u'сентября': 9,
-        u'октября': 10,
-        u'ноября': 11,
-        u'декабря': 12,
+        'января': 1,
+        'февраля': 2,
+        'марта': 3,
+        'апреля': 4,
+        'мая': 5,
+        'июня': 6,
+        'июля': 7,
+        'августа': 8,
+        'сентября': 9,
+        'октября': 10,
+        'ноября': 11,
+        'декабря': 12,
     }
     relative_days = {
-        u'сегодня': 0,
-        u'вчера': -1
+        'сегодня': 0,
+        'вчера': -1
     }
-    tz_moscow = pytz.timezone(u'Europe/Moscow')
+    tz_moscow = pytz.timezone('Europe/Moscow')
 
     def __init__(self):
-        months = u'|'.join(self.months)
-        relative_days = u'(?P<relative>{0}|{1})'.format(*self.relative_days.keys())
-        time_pattern = u'(?P<hours>\d{1,2}):(?P<minutes>\d{1,2})'
-        date_pattern = u'(?P<day>\d{1,2})\s+(?P<month>' + months + u')\s+(?P<year>\d{4})'
-        pattern = u'^({0}|{1})\s+в\s+{2}$'.format(date_pattern, relative_days, time_pattern)
+        months = '|'.join(self.months)
+        relative_days = '(?P<relative>{0}|{1})'.format(*self.relative_days.keys())
+        time_pattern = '(?P<hours>\d{1,2}):(?P<minutes>\d{1,2})'
+        date_pattern = '(?P<day>\d{1,2})\s+(?P<month>' + months + ')\s+(?P<year>\d{4})'
+        pattern = '^({0}|{1})\s+в\s+{2}$'.format(date_pattern, relative_days, time_pattern)
         self.time_parse_re = re.compile(pattern, re.UNICODE | re.IGNORECASE)
 
     def parse(self, date_string):
@@ -123,7 +123,7 @@ class KinozalTracker(object):
     login_url = "http://kinozal.tv/takelogin.php"
     profile_page = "http://kinozal.tv/inbox.php"
     url_regex = re.compile(six.text_type(r'^https?://kinozal\.tv/details\.php\?id=(\d+)$'))
-    last_update_text_re = re.compile(u'^Торрент-файл обновлен\s+(.*)$', re.UNICODE | re.IGNORECASE)
+    last_update_text_re = re.compile('^Торрент-файл обновлен\s+(.*)$', re.UNICODE | re.IGNORECASE)
     date_parser = KinozalDateParser()
 
     def __init__(self, c_uid=None, c_pass=None):

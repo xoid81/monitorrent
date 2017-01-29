@@ -215,7 +215,7 @@ class QBittorrentPluginTest(DbTestCase):
 
         mocker.post(target + "login", text="Ok.")
 
-        preferences = {'save_path': u'/mnt/media/downloads'}
+        preferences = {'save_path': '/mnt/media/downloads'}
         mocker.get(target + "query/preferences", text=json.dumps(preferences))
 
         plugin = QBittorrentClientPlugin()
@@ -226,7 +226,7 @@ class QBittorrentPluginTest(DbTestCase):
                     'password': self.real_password}
         plugin.set_settings(settings)
 
-        assert plugin.get_download_dir() == u'/mnt/media/downloads'
+        assert plugin.get_download_dir() == '/mnt/media/downloads'
 
     @Mocker()
     def test_get_download_dir_error(self, mocker):

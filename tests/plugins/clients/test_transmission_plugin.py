@@ -210,7 +210,7 @@ class TransmissionPluginTest(DbTestCase):
         settings = {'host': 'localhost', 'username': 'monitorrent', 'password': 'monitorrent'}
         plugin.set_settings(settings)
 
-        assert plugin.get_download_dir() == u'/mnt/media/downloads'
+        assert plugin.get_download_dir() == '/mnt/media/downloads'
 
         rpc_client.get_session.assert_called_once()
 

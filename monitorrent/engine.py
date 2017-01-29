@@ -99,7 +99,7 @@ class Engine(object):
                                 .format(html.escape(old_existing_torrent['name'])))
             existing_torrent = self.clients_manager.find_torrent(torrent.info_hash)
         if not existing_torrent:
-            raise Exception(u'Torrent {0} wasn\'t added'.format(filename))
+            raise Exception('Torrent {0} wasn\'t added'.format(filename))
         return existing_torrent['date_added']
 
     def execute(self, ids):
@@ -374,9 +374,9 @@ class DbLoggerWrapper(Logger):
 
     def failed(self, message, exc_type=None, exc_value=None, exc_tb=None):
         if exc_value is not None:
-            formatted_exception = u''.join(traceback.format_exception(exc_type, exc_value, exc_tb))
-            failed_message = u'{0}<br/><pre>{1}</pre>'\
-                .format(message, html.escape(formatted_exception).replace(u'\n', u'<br/>'))
+            formatted_exception = ''.join(traceback.format_exception(exc_type, exc_value, exc_tb))
+            failed_message = '{0}<br/><pre>{1}</pre>'\
+                .format(message, html.escape(formatted_exception).replace('\n', '<br/>'))
         else:
             failed_message = message
         self._log_manager.log_entry(failed_message, 'failed')

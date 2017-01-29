@@ -79,7 +79,7 @@ class TrackerTest(RestTestBase, TrackersManagerMixin):
         result = json.loads(body)
 
         assert isinstance(result, dict)
-        assert result == {u'can_check': True, u'settings': settings}
+        assert result == {'can_check': True, 'settings': settings}
 
     def test_empty_get_settings(self):
         tracker_mock = Mock()
@@ -99,7 +99,7 @@ class TrackerTest(RestTestBase, TrackersManagerMixin):
         result = json.loads(body)
 
         self.assertIsInstance(result, dict)
-        self.assertEqual(result, {u'can_check': False, u'settings': {}})
+        self.assertEqual(result, {'can_check': False, 'settings': {}})
 
     def test_not_found_settings(self):
         self.tracker_manager.get_settings = MagicMock(side_effect=KeyError)

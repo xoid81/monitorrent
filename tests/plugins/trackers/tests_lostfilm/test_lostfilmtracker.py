@@ -81,7 +81,7 @@ class LostFilmTrackerTest(ReadContentMixin, TestCase):
     @use_vcr()
     def test_parse_https_url(self):
         title = self.tracker.parse_url('https://www.lostfilm.tv/browse.php?cat=236')
-        self.assertEqual(u'12 Monkeys', title['original_name'])
+        self.assertEqual('12 Monkeys', title['original_name'])
 
     @use_vcr()
     def test_parse_correct_url_issue_22_1(self):
@@ -316,12 +316,12 @@ class LostFilmTrackerTest(ReadContentMixin, TestCase):
         """
         :type mocker: requests_mock.Mocker
         """
-        uid = u'151548'
-        pass_ = u'dd770c2445d297ed0aa192c153e5424c'
-        usess = u'e76e71e0f32e65c2470e42016dbb785e'
+        uid = '151548'
+        pass_ = 'dd770c2445d297ed0aa192c153e5424c'
+        usess = 'e76e71e0f32e65c2470e42016dbb785e'
 
         mocker.post('https://login1.bogi.ru/login.php?referer=https%3A%2F%2Fwww.lostfilm.tv%2F',
-                    text=self.read_httpretty_content(u'test_lostfilmtracker.1.login1.bogi.ru.html',
+                    text=self.read_httpretty_content('test_lostfilmtracker.1.login1.bogi.ru.html',
                                                      encoding='utf-8'))
 
         mocker.post('http://www.lostfilm.tv/blg.php?ref=random',

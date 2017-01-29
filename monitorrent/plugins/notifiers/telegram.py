@@ -113,8 +113,8 @@ class TelegramNotifierPlugin(NotifierPlugin):
         errors_chat_ids = None
         for chat_id in chat_ids:
             parameters = {
-                u'chat_id': chat_id,
-                u'text': text,
+                'chat_id': chat_id,
+                'text': text,
             }
 
             request = requests.post(api_url, data=parameters)

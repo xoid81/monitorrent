@@ -571,7 +571,7 @@ class LostFilmPlugin(WithCredentialsMixin, TrackerPluginBase):
                             topic.episode = info[1]
                             last_update = engine_downloads.add_torrent(e, filename, torrent, None,
                                                                        TopicSettings.from_topic(topic))
-                            engine_downloads.downloaded(u'Download new series: {0} ({1}, {2})'
+                            engine_downloads.downloaded('Download new series: {0} ({1}, {2})'
                                                         .format(display_name, info[0], info[1]),
                                                         torrent_content)
                             self.save_topic(topic, last_update, Status.Ok)

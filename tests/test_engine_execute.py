@@ -174,7 +174,7 @@ class EngineTrackersTest(TestCase):
         with self.engine_trackers:
             pass
 
-        self.engine.info.assert_has_calls([call(u'Begin execute'), call(u'End execute')])
+        self.engine.info.assert_has_calls([call('Begin execute'), call('End execute')])
         self.engine.failed.assert_not_called()
         self.engine.downloaded.assert_not_called()
 
@@ -185,7 +185,7 @@ class EngineTrackersTest(TestCase):
         with self.engine_trackers:
             raise exception
 
-        self.engine.info.assert_called_once_with(u'Begin execute')
+        self.engine.info.assert_called_once_with('Begin execute')
         assert exception == self.engine.failed.mock_calls[0][1][2]
         self.engine.downloaded.assert_not_called()
 
@@ -216,8 +216,8 @@ class EngineTrackerTest(TestCase):
         with self.engine_tracker:
             pass
 
-        self.engine.info.assert_has_calls([call(u'Start checking for <b>tracker</b>'),
-                                           call(u'End checking for <b>tracker</b>')])
+        self.engine.info.assert_has_calls([call('Start checking for <b>tracker</b>'),
+                                           call('End checking for <b>tracker</b>')])
         self.engine.failed.assert_not_called()
         self.engine.downloaded.assert_not_called()
 
@@ -228,7 +228,7 @@ class EngineTrackerTest(TestCase):
         with self.engine_tracker:
             raise exception
 
-        self.engine.info.assert_called_once_with(u'Start checking for <b>tracker</b>')
+        self.engine.info.assert_called_once_with('Start checking for <b>tracker</b>')
         assert exception == self.engine.failed.mock_calls[0][1][2]
         self.engine.downloaded.assert_not_called()
 
@@ -275,7 +275,7 @@ class TestEngineTopic(TestCase):
         with self.engine_topic:
             pass
 
-        self.engine.info.assert_has_calls([call(u'Check for changes <b>Topic</b>')])
+        self.engine.info.assert_has_calls([call('Check for changes <b>Topic</b>')])
         self.engine.failed.assert_not_called()
         self.engine.downloaded.assert_not_called()
 
@@ -286,7 +286,7 @@ class TestEngineTopic(TestCase):
         with self.engine_topic:
             raise exception
 
-        self.engine.info.assert_has_calls([call(u'Check for changes <b>Topic</b>')])
+        self.engine.info.assert_has_calls([call('Check for changes <b>Topic</b>')])
         assert exception == self.engine.failed.mock_calls[0][1][2]
         self.engine.downloaded.assert_not_called()
 
@@ -393,7 +393,7 @@ class MockTracker(TrackerPluginBase, ReadContentMixin):
 
 class EngineExecuteFullTest(EngineTest):
     def test_execute(self):
-        topics = [Topic(id=1, url='http://mocktracker.com/topic/id123', display_name=u'Show / Шоу')]
+        topics = [Topic(id=1, url='http://mocktracker.com/topic/id123', display_name='Show / Шоу')]
 
         tracker = MockTracker()
         tracker.get_topics = Mock(return_value=topics)
@@ -408,10 +408,10 @@ class EngineExecuteFullTest(EngineTest):
 
         self.engine.info.assert_called()
         self.engine.failed.assert_not_called()
-        self.engine.downloaded.assert_called_once_with(u'<b>Show / Шоу</b> was changed', ANY)
+        self.engine.downloaded.assert_called_once_with('<b>Show / Шоу</b> was changed', ANY)
 
     def test_exception_during_engine_execute_should_be_handled_and_logged(self):
-        topics = [Topic(id=1, url='http://mocktracker.com/topic/id123', display_name=u'Show / Шоу')]
+        topics = [Topic(id=1, url='http://mocktracker.com/topic/id123', display_name='Show / Шоу')]
 
         tracker = MockTracker()
         tracker.get_topics = Mock(return_value=topics)
@@ -430,7 +430,7 @@ class EngineExecuteFullTest(EngineTest):
         self.engine.downloaded.assert_not_called()
 
     def test_exception_during_tracker_execute_should_be_handled_and_logged(self):
-        topics = [Topic(id=1, url='http://mocktracker.com/topic/id123', display_name=u'Show / Шоу')]
+        topics = [Topic(id=1, url='http://mocktracker.com/topic/id123', display_name='Show / Шоу')]
 
         tracker = MockTracker()
         tracker.get_topics = Mock(return_value=topics)

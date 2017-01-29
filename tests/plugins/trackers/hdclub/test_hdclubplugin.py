@@ -40,7 +40,7 @@ class TestHdclubPlugin(DbTestCase):
             'https://hdclub.org/details.php?id=20000',
         ]
 
-        display_name = u'Донни Браско / Donnie Brasco (1997) [Extended Cut] 1080p BD-Remux'
+        display_name = 'Донни Браско / Donnie Brasco (1997) [Extended Cut] 1080p BD-Remux'
         for url in urls:
             assert self.plugin.parse_url(url) == {'original_name': display_name}
 

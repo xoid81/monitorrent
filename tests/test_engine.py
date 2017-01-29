@@ -842,8 +842,8 @@ class TestDbLoggerWrapper(DbTestCase):
         db_logger = DbLoggerWrapper(ExecuteLogManager())
 
         finish_time = datetime.now(pytz.utc)
-        exception_message = u'Something Not Specified'
-        failed_message = u'Execute Failed'
+        exception_message = 'Something Not Specified'
+        failed_message = 'Execute Failed'
 
         db_logger.started(finish_time)
         try:

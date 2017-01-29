@@ -469,9 +469,9 @@ class TrackerPluginBaseTest(DbTestCase):
         plugin = MockTrackerPlugin()
         plugin.topic_class = self.MockTopic
         fields = {
-            'url': u'http://base.mocktracker.org/torrent/1',
-            'display_name': u'Original Name / Translated Name / Info',
-            'additional_attribute': u'Text',
+            'url': 'http://base.mocktracker.org/torrent/1',
+            'display_name': 'Original Name / Translated Name / Info',
+            'additional_attribute': 'Text',
             'type': 'base.mocktracker.com',
         }
         with DBSession() as db:
@@ -562,8 +562,8 @@ class TrackerPluginBaseTest(DbTestCase):
             fields['id'] = topic.id
 
         # url shouldn't be updated
-        fields['url'] = u'http://base.mocktracker.org/torrent/2'
-        fields['display_name'] = u'Original Name / Translated Name / Info 2'
+        fields['url'] = 'http://base.mocktracker.org/torrent/2'
+        fields['display_name'] = 'Original Name / Translated Name / Info 2'
         fields['additional_attribute'] = 'Text 2'
 
         self.assertTrue(plugin.update_topic(fields['id'], fields))

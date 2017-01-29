@@ -150,7 +150,7 @@ class DefaultClientTest(RestTestBase):
             return {}
 
         def get_download_dir(self):
-            return u'/mnt/media/download'
+            return '/mnt/media/download'
 
     def test_get_default(self):
         clients_manager = ClientsManager({'tracker.org': ClientCollectionTest.TestClient()})
@@ -179,7 +179,7 @@ class DefaultClientTest(RestTestBase):
         result = json.loads(body)
 
         expected_fields = {
-            'download_dir': u'/mnt/media/download',
+            'download_dir': '/mnt/media/download',
             'other': None
         }
         assert result == {'name': 'test_client_with_fields', 'settings': {}, 'fields': expected_fields}
