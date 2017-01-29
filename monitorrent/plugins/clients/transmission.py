@@ -74,8 +74,10 @@ class TransmissionClientPlugin(object):
             if not cred:
                 return False
             try:
+                username = cred.username.encode('utf-8') if six.PY2 else cred.username
+                password = cred.password.encode('utf-8') if six.PY2 else cred.password
                 client = transmissionrpc.Client(address=cred.host, port=cred.port,
-                                                user=cred.username, password=cred.password)
+                                                user=username, password=password)
                 return client
             except transmissionrpc.TransmissionError:
                 return False
