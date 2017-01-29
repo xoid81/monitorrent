@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import falcon
 import six
 from monitorrent.settings_manager import SettingsManager

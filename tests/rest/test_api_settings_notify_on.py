@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import json
 import falcon
 from ddt import ddt, data, unpack

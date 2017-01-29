@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from pytest import raises
 
 from sqlalchemy import Column, Integer, String, ForeignKey

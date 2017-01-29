@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from threading import Timer, RLock
 import monitorrent
 import requests

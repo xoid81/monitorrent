@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from monitorrent.new_version_checker import NewVersionChecker
 
 

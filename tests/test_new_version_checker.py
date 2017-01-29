@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from requests_mock import Mocker
 from time import sleep
 from unittest import TestCase
