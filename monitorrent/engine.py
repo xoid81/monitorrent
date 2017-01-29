@@ -140,7 +140,7 @@ class EngineExecute(object):
     def failed(self, message, exc_type=None, exc_value=None, exc_tb=None):
         self.engine.failed(message, exc_type, exc_value, exc_tb)
         if exc_value is not None:
-            notify_message = message + u"\r\n" + six.text_type(exc_value)
+            notify_message = message + "\r\n" + six.text_type(exc_value)
         else:
             notify_message = message
         self.notify(notify_message, self.notifier_manager_execute.notify_failed)
@@ -154,7 +154,7 @@ class EngineExecute(object):
             try:
                 method(message)
             except:
-                self.engine.failed(u"Failed notify", *sys.exc_info())
+                self.engine.failed("Failed notify", *sys.exc_info())
 
 
 class EngineTrackers(EngineExecute):
@@ -185,14 +185,14 @@ class EngineTrackers(EngineExecute):
         self.engine.update_progress(done_progress + current_progress)
 
     def __enter__(self):
-        self.info(u"Begin execute")
+        self.info("Begin execute")
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_val is not None:
-            self.failed(u"Exception while execute", exc_type, exc_val, exc_tb)
+            self.failed("Exception while execute", exc_type, exc_val, exc_tb)
         else:
-            self.info(u"End execute")
+            self.info("End execute")
 
         self.done_topics += self.tracker_topics_count
         self.update_progress(100)
@@ -221,15 +221,15 @@ class EngineTracker(EngineExecute):
         self.engine_trackers.update_progress(progress)
 
     def __enter__(self):
-        self.info(u"Start checking for <b>{0}</b>".format(self.tracker))
+        self.info("Start checking for <b>{0}</b>".format(self.tracker))
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_val is not None:
-            self.failed(u"Failed while checking for <b>{0}</b>".format(self.tracker),
+            self.failed("Failed while checking for <b>{0}</b>".format(self.tracker),
                         exc_type, exc_val, exc_tb)
         else:
-            self.info(u"End checking for <b>{0}</b>".format(self.tracker))
+            self.info("End checking for <b>{0}</b>".format(self.tracker))
         return True
 
 
@@ -258,7 +258,7 @@ class EngineTopics(EngineExecute):
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_val is not None:
-            self.failed(u"Failed while checking topics", exc_type, exc_val, exc_tb)
+            self.failed("Failed while checking topics", exc_type, exc_val, exc_tb)
         return True
 
 
@@ -278,7 +278,7 @@ class EngineTopic(EngineExecute):
         return EngineDownloads(count, self, self.notifier_manager_execute, self.engine)
 
     def status_changed(self, old_status, new_status):
-        message = u"{0} status changed: {1}".format(self.topic_name, new_status)
+        message = "{0} status changed: {1}".format(self.topic_name, new_status)
         self.notify(message, self.notifier_manager_execute.notify_status_changed)
         log = self.engine.failed if new_status != Status.Ok else self.engine.info
         log(message)
@@ -287,13 +287,13 @@ class EngineTopic(EngineExecute):
         self.engine_topics.update_progress(_clamp(progress))
 
     def __enter__(self):
-        self.info(u"Check for changes <b>{0}</b>".format(self.topic_name))
+        self.info("Check for changes <b>{0}</b>".format(self.topic_name))
         self.update_progress(0)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_val is not None:
-            self.failed(u"Exception while execute topic", exc_type, exc_val, exc_tb)
+            self.failed("Exception while execute topic", exc_type, exc_val, exc_tb)
         self.update_progress(100)
         return True
 

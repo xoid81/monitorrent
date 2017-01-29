@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import unicode_literals
 import datetime
 from ddt import ddt
 from mock import Mock, MagicMock, call, ANY
@@ -128,8 +129,8 @@ class EngineExecute2Test(TestCase):
         self.notifier_manager_execute.notify_download.assert_called_once_with(message)
 
     def test_call_failed_with_failed_notify_should_not_crash(self):
-        message = u"Test Message"
-        error_message = u"Some error"
+        message = "Test Message"
+        error_message = "Some error"
         exception = Exception(error_message)
         self.notifier_manager_execute.notify_failed = Mock(side_effect=exception)
 
@@ -145,8 +146,8 @@ class EngineExecute2Test(TestCase):
         assert exception == self.engine.failed.mock_calls[1][1][2]
 
     def test_call_downloaded_with_failed_notify_should_not_crash(self):
-        message = u"Test Message"
-        error_message = u"Some error"
+        message = "Test Message"
+        error_message = "Some error"
         torrent = object()
         exception = Exception(error_message)
         self.notifier_manager_execute.notify_download = Mock(side_effect=exception)
@@ -179,7 +180,7 @@ class EngineTrackersTest(TestCase):
         self.engine.downloaded.assert_not_called()
 
     def test_exception_exit_should_call_failed_and_not_crash(self):
-        error_message = u"Some error"
+        error_message = "Some error"
         exception = Exception(error_message)
 
         with self.engine_trackers:
@@ -222,7 +223,7 @@ class EngineTrackerTest(TestCase):
         self.engine.downloaded.assert_not_called()
 
     def test_exception_exit_should_call_failed_and_not_crash(self):
-        error_message = u"Some error"
+        error_message = "Some error"
         exception = Exception(error_message)
 
         with self.engine_tracker:
@@ -251,7 +252,7 @@ class TestEngineTopics(TestCase):
         self.engine.downloaded.assert_not_called()
 
     def test_exception_exit_should_call_failed_and_not_crash(self):
-        error_message = u"Some error"
+        error_message = "Some error"
         exception = Exception(error_message)
 
         with self.engine_topics:
@@ -269,7 +270,7 @@ class TestEngineTopic(TestCase):
         self.notifier_manager_execute = Mock()
 
         # noinspection PyTypeChecker
-        self.engine_topic = EngineTopic(u"Topic", self.engine_topics, self.notifier_manager_execute, self.engine)
+        self.engine_topic = EngineTopic("Topic", self.engine_topics, self.notifier_manager_execute, self.engine)
 
     def test_regular_exit_should_not_call_info(self):
         with self.engine_topic:
@@ -280,7 +281,7 @@ class TestEngineTopic(TestCase):
         self.engine.downloaded.assert_not_called()
 
     def test_exception_exit_should_call_failed_and_not_crash(self):
-        error_message = u"Some error"
+        error_message = "Some error"
         exception = Exception(error_message)
 
         with self.engine_topic:
@@ -309,7 +310,7 @@ class TestEngineDownloads(TestCase):
         self.engine.downloaded.assert_not_called()
 
     def test_exception_exit_should_call_failed_and_not_crash(self):
-        error_message = u"Some error"
+        error_message = "Some error"
         exception = Exception(error_message)
 
         with self.engine_downloads:
@@ -386,8 +387,8 @@ class MockTracker(TrackerPluginBase, ReadContentMixin):
                 with engine_topics.start(i, topic_name) as engine_topic:
                     engine_topic.status_changed(Status.Error, Status.Ok)
                     with engine_topic.start(1) as engine_downloads:
-                        engine_downloads.downloaded(u"<b>{0}</b> was changed".format(topic_name), self.torrent)
-                        engine_downloads.add_torrent(0, u"file.torrent", self.torrent, None,
+                        engine_downloads.downloaded("<b>{0}</b> was changed".format(topic_name), self.torrent)
+                        engine_downloads.add_torrent(0, "file.torrent", self.torrent, None,
                                                      TopicSettings(None))
 
 

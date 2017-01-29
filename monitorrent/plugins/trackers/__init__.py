@@ -104,7 +104,7 @@ class TrackerPluginBase(with_metaclass(abc.ABCMeta, object)):
 
     def save_topic(self, topic, last_update, status=Status.Ok):
         if not isinstance(topic, self.topic_class):
-            raise Exception(u"Can't update topic of wrong class. Expected {0}, but was {1}"
+            raise Exception("Can't update topic of wrong class. Expected {0}, but was {1}"
                             .format(self.topic_class, topic.__class__))
 
         with DBSession() as db:
@@ -227,7 +227,7 @@ class ExecuteWithHashChangeMixin(TrackerPluginMixinBase):
                         if status != Status.Ok:
                             continue
                     elif response.status_code != 200:
-                        raise Exception(u"Can't download url. Status: {}".format(response.status_code))
+                        raise Exception("Can't download url. Status: {}".format(response.status_code))
                     if not filename:
                         filename = topic_name
                     torrent_content = response.content
@@ -237,7 +237,7 @@ class ExecuteWithHashChangeMixin(TrackerPluginMixinBase):
                         with engine_topic.start(1) as engine_downloads:
                             last_update = engine_downloads.add_torrent(0, filename, torrent, old_hash,
                                                                        TopicSettings.from_topic(topic))
-                            engine.downloaded(u"Torrent <b>{0}</b> was changed".format(topic_name), torrent_content)
+                            engine.downloaded("Torrent <b>{0}</b> was changed".format(topic_name), torrent_content)
                             topic.hash = torrent.info_hash
                             topic.last_update = last_update
                             self.save_topic(topic, last_update, Status.Ok)
@@ -325,15 +325,15 @@ class WithCredentialsMixin(with_metaclass(abc.ABCMeta, TrackerPluginMixinBase)):
 
     def _execute_login(self, engine):
         if not self.verify():
-            engine.info(u"Credentials/Settings are not valid\nTry login.")
+            engine.info("Credentials/Settings are not valid\nTry login.")
             login_result = self.login()
             if login_result == LoginResult.CredentialsNotSpecified:
-                engine.info(u"Credentials not specified\nSkip plugin")
+                engine.info("Credentials not specified\nSkip plugin")
                 return False
             if login_result != LoginResult.Ok:
-                engine.failed(u"Can't login: {}".format(login_result))
+                engine.failed("Can't login: {}".format(login_result))
                 return False
-            engine.info(u"Login successful")
+            engine.info("Login successful")
             return True
-        engine.info(u"Credentials/Settings are valid")
+        engine.info("Credentials/Settings are valid")
         return True

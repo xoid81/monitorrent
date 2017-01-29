@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import re
 import six
 import sys
@@ -97,7 +98,7 @@ class KinozalDateParser(object):
     def parse(self, date_string):
         match = self.time_parse_re.match(date_string)
         if not match:
-            raise Exception(u"Can't parse string: {0}".format(date_string))
+            raise Exception("Can't parse string: {0}".format(date_string))
 
         parts = match.groupdict()
         if 'relative' in parts and parts['relative'] is not None:

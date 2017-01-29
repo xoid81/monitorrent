@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import unicode_literals
 from unittest import TestCase
 
 from ddt import data, ddt, unpack
@@ -34,7 +35,7 @@ class AnidubTrackerTest(TestCase):
     @use_vcr
     @data(
         ("http://tr.anidub.com/?newsid=492",
-         u"Пожиратель душ / Soul Eater [51 из 51]",
+         "Пожиратель душ / Soul Eater [51 из 51]",
          ['TV (720p)', 'BD (720p)', 'HWP', 'PSP'])
     )
     @unpack

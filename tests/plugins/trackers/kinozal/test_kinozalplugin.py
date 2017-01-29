@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import unicode_literals
 import pytz
 from datetime import datetime
 from mock import patch

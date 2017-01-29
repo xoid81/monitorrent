@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from enum import Enum
 
 
@@ -14,9 +15,9 @@ class Status(Enum):
 
     def __str__(self):
         if self == Status.Ok:
-            return u"Ok"
+            return "Ok"
         if self == Status.NotFound:
-            return u"Not Found"
+            return "Not Found"
         if self == Status.Error:
-            return u"Error"
-        return u"Unknown"
+            return "Error"
+        return "Unknown"

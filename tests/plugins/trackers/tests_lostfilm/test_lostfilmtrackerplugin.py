@@ -250,10 +250,10 @@ class LostFilmTrackerPluginTest(ReadContentMixin, DbTestCase):
         mocker.register_uri(requests_mock.GET, re.compile(re.escape('http://www.lostfilm.tv/nrdr2.php?c=245&s=1&e=10')),
                             text=self.read_httpretty_content('nrd.php_c=245&s=1&e=10.html', encoding='utf-8'))
         mocker.register_uri(requests_mock.GET, re.compile(re.escape('http://retre.org/?c=245&s=1&e=09') +
-                                                          u"&u=\d+&h=[a-z0-9]+"),
+                                                          "&u=\d+&h=[a-z0-9]+"),
                             text=self.read_httpretty_content('reTre.org_c=245&s=1&e=09.html', encoding='utf-8'))
         mocker.register_uri(requests_mock.GET, re.compile(re.escape('http://retre.org/?c=245&s=1&e=10') +
-                                                          u"&u=\d+&h=[a-z0-9]+"),
+                                                          "&u=\d+&h=[a-z0-9]+"),
                             text=self.read_httpretty_content('reTre.org_c=245&s=1&e=10.html', encoding='utf-8'))
 
         # Scream series
@@ -351,7 +351,7 @@ class LostFilmTrackerPluginTest(ReadContentMixin, DbTestCase):
         mocker.register_uri(requests_mock.GET, 'http://www.lostfilm.tv/nrdr2.php?c=58&s=1&e=13',
                             text=self.read_httpretty_content('nrd.php_c=58&s=1&e=13.html', encoding='utf-8'))
         mocker.register_uri(requests_mock.GET, re.compile(re.escape('http://retre.org/?c=58&s=1&e=13') +
-                                                          u"&u=\d+&h=[a-z0-9]+"),
+                                                          "&u=\d+&h=[a-z0-9]+"),
                             text=self.read_httpretty_content('reTre.org_c=58&s=1&e=13.html', encoding='utf-8'))
 
         self.plugin.tracker.setup(helper.real_uid, helper.real_pass, helper.real_usess)
@@ -435,7 +435,7 @@ class LostFilmTrackerPluginTest(ReadContentMixin, DbTestCase):
         mocker.register_uri(requests_mock.GET, re.compile(re.escape('http://www.lostfilm.tv/nrdr2.php?c=245&s=1&e=10')),
                             text=self.read_httpretty_content('nrd.php_c=245&s=1&e=10.html', encoding='utf-8'))
         mocker.register_uri(requests_mock.GET, re.compile(re.escape('http://retre.org/?c=245&s=1&e=10') +
-                                                          u"&u=\d+&h=[a-z0-9]+"),
+                                                          "&u=\d+&h=[a-z0-9]+"),
                             text=self.read_httpretty_content('reTre.org_c=245&s=1&e=10.html', encoding='utf-8'))
         mocker.register_uri(requests_mock.GET, 'http://tracktor.in/td.php', content=torrent_body,
                             headers={'content-disposition': 'attachment; filename=' + file_name})

@@ -50,8 +50,8 @@ class NnmClubTracker(object):
     tracker_settings = None
     tracker_domains = ['nnmclub.to']
     title_headers = ['torrent :: nnm-club']
-    _login_url = 'http://nnm-club.me/forum/login.php'
-    _profile_page = "http://nnmclub.to/forum/profile.php?mode=viewprofile&u={}"
+    _login_url = 'https://nnmclub.to/forum/login.php'
+    _profile_page = "https://nnmclub.to/forum/profile.php?mode=viewprofile&u={}"
 
     def __init__(self, user_id=None, sid=None):
         self.user_id = user_id

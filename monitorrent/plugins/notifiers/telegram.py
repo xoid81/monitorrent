@@ -72,7 +72,7 @@ def get_current_version(engine):
 
 
 class TelegramNotifierPlugin(NotifierPlugin):
-    _remove_tags_regex = re.compile(u"</?[a-z]+>", re.IGNORECASE)
+    _remove_tags_regex = re.compile("</?[a-z]+>", re.IGNORECASE)
     _telegram_api_format = 'https://api.telegram.org/bot{0}/{1}'
     settings_fields = ['chat_ids', 'access_token']
 
@@ -130,7 +130,7 @@ class TelegramNotifierPlugin(NotifierPlugin):
         return True
 
     def _remove_tags(self, text):
-        return self._remove_tags_regex.sub(u"", text)
+        return self._remove_tags_regex.sub("", text)
 
 
 register_plugin('notifier', 'telegram', TelegramNotifierPlugin(), upgrade)

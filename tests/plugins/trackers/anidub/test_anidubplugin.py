@@ -1,4 +1,5 @@
 # coding=utf-8
+from __future__ import unicode_literals
 from ddt import data, unpack, ddt
 from mock import patch
 from monitorrent.plugins.trackers import TrackerSettings, LoginResult
@@ -32,7 +33,7 @@ class AnidubPluginTest(DbTestCase):
     @use_vcr()
     @data(
         ("http://tr.anidub.com/anime_tv/full/492-pozhiratel-dush-soul-eater-01-51-of-512008-720r.html",
-         u"Пожиратель душ / Soul Eater [51 из 51]",
+         "Пожиратель душ / Soul Eater [51 из 51]",
          ['TV (720p)', 'BD (720p)', 'HWP', 'PSP'])
     )
     @unpack
@@ -99,7 +100,7 @@ class AnidubPluginTest(DbTestCase):
     @data(
         ("http://tr.anidub.com/anime_tv/full/492-pozhiratel-dush-soul-eater-01-51-of-512008-720r.html",
          False,
-         u"Пожиратель душ / Soul Eater [51 из 51]",
+         "Пожиратель душ / Soul Eater [51 из 51]",
          'TV (720p)',
          ['TV (720p)', 'BD (720p)', 'HWP', 'PSP']),
         ("http://invalid.url",
@@ -122,7 +123,7 @@ class AnidubPluginTest(DbTestCase):
     @helper.use_vcr()
     def test_add_topic(self):
         params = {
-            'display_name': u"Пожиратель душ / Soul Eater [51 из 51]",
+            'display_name': "Пожиратель душ / Soul Eater [51 из 51]",
             'format': "BD (720p)"
         }
         url = "http://tr.anidub.com/anime_tv/full/492-pozhiratel-dush-soul-eater-01-51-of-512008-720r.html"

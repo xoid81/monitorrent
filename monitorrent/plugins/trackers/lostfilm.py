@@ -536,7 +536,7 @@ class LostFilmPlugin(WithCredentialsMixin, TrackerPluginBase):
                         continue
 
                     if episodes is None or len(episodes) == 0:
-                        engine_topic.info(u"Series <b>{0}</b> not changed".format(display_name))
+                        engine_topic.info("Series <b>{0}</b> not changed".format(display_name))
                         continue
 
                     with engine_topic.start(len(episodes)) as engine_downloads:
@@ -557,7 +557,7 @@ class LostFilmPlugin(WithCredentialsMixin, TrackerPluginBase):
                                 response, filename = download(download_info['download_url'],
                                                               **self.tracker_settings.get_requests_kwargs())
                                 if response.status_code != 200:
-                                    raise Exception(u"Can't download url. Status: {}".format(response.status_code))
+                                    raise Exception("Can't download url. Status: {}".format(response.status_code))
                             except Exception as e:
                                 engine_downloads.failed("Failed to download from <b>{0}</b>.\nReason: {1}"
                                                         .format(download_info['download_url'], html.escape(str(e))))
